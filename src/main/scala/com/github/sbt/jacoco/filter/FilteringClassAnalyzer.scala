@@ -106,7 +106,7 @@ private final class FilteringClassAnalyzer(
 final class FilteringAnalyzer(executionData: ExecutionDataStore, coverageVisitor: ICoverageVisitor)
     extends Analyzer(executionData, coverageVisitor) {
 
-  override def analyzeClass(reader: ClassReader): Unit = {
+  def analyzeClass(reader: ClassReader): Unit = {
     val classNode = new ClassNode()
     reader.accept(classNode, 0)
     val visitor = createFilteringVisitor(CRC64.classId(reader.b), reader.getClassName, classNode)
